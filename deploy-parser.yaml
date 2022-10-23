@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: parser-app
+  labels:
+    app: parser-app
+spec:
+  selector:
+    matchLabels:
+      app: parser-app
+  template:
+    metadata:
+      labels:
+        app: parser-app
+    spec:
+      containers:
+      - name: parser-app
+        image: yaronpr/parser:latest
