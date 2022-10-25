@@ -128,3 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 rulefull.csv
+rulefullnextday.csv
+rule_parquet.parquet

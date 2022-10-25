@@ -18,4 +18,4 @@ spec:
         image: yaronpr/parser:latest
         env:        
         - name: RULE_FILE_NAME
-          value: "rulefull.csv"
+          value: "rulefullnextday.csv"
