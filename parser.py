@@ -13,7 +13,7 @@ lastday = datetime.today() - timedelta(days=1)
 fromdate = pd.to_datetime(str(lastday.year) + "-" + str(lastday.month) + "-" + str(lastday.day) + "T00:00:00Z")
 todate = pd.to_datetime(str(current.year) + "-" + str(current.month) + "-" + str(current.day) + "T00:00:00Z")
 
-isfirstrun = False
+isfirstrun = os.environ.get("IS_FIRST_RUN", "False").lower() in ('true', '1')
 
 async def main():  
   isComplete = False
@@ -40,11 +40,11 @@ async def main():
         df_filtered = df.loc[(fromdate <= df['Creation-Time']) & (df['Creation-Time'] < todate)]        
 
       df_sorted = df_filtered.sort_values(by='Creation-Time')
-      n = 8000  #chunk row size
+      n = 1000  #chunk row size
       list_df = [df_sorted[i:i+n] for i in range(0,df_sorted.shape[0],n)]
       for chunk in list_df:
         logger.info(chunk.to_string())
-        time.sleep(5) 
+        time.sleep(1) 
 
       logger.info("End Parser" + " " + datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
       isComplete = True

@@ -19,3 +19,5 @@ spec:
         env:        
         - name: RULE_FILE_NAME
           value: "rulefullnextday.csv"
+        - name: IS_FIRST_RUN
+          value: "True"
